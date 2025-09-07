@@ -1,58 +1,46 @@
-# simple-html-renderer
+# Simple HTML Renderer
 
-A Python-based HTML rendering engine built from scratch using object-oriented principles.
+![Python](https://img.shields.io/badge/python-3.12%2B-blue)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![Last Commit](https://img.shields.io/github/last-commit/umckinney/simple-html-renderer)
+![Repo Size](https://img.shields.io/github/repo-size/umckinney/simple-html-renderer)
 
-This educational project demonstrates how to construct a tree-like DOM structure and serialize it to HTML. It supports tags, attributes, inline text, indentation, and even self-closing tags.
+This project provides a class-based system for rendering HTML programmatically using Python.  
+It supports element nesting, attributes, self-closing tags, and inline vs. block-level elements.
 
 ## Features
 
-- 🏗️ Compose HTML using Python classes like `Html`, `Body`, `P`, `Head`, etc.
-- 🧱 Nest elements with parent-child relationships
-- 📝 Add attributes and text content dynamically
-- 📄 Render well-structured and indented HTML
-- 🚫 Handle self-closing tags like `<br />` and `<hr />`
-- 💡 Demonstrates use of `__str__`, `__repr__`, and `__call__` methods
+- HTML tag rendering with indentation
+- Element content and attribute handling
+- Support for self-closing tags (e.g., `br`, `hr`, `meta`)
+- Specialized subclasses for common HTML tags (`Html`, `Body`, `P`, `Title`, etc.)
+- Link and header tag rendering
+- Readable, testable architecture with class-based design
 
-## Example Usage
+## Getting Started
 
+To render an HTML structure, create instances of HTML elements and nest them using `.append()`.
+
+Example:
 ```python
-html = Html()
+from html_render import Html, Body, P
+
+page = Html()
 body = Body()
-body.append(P("This is a paragraph."))
-html.append(body)
+body.append(P("Hello, world!"))
+page.append(body)
 
-render(html, output_file)
+with open("output.html", "w") as f:
+    page.render(f)
 ```
 
-This would produce:
+## Running Tests
 
-```html
-<html>
-    <body>
-        <p>This is a paragraph.</p>
-    </body>
-</html>
+Run the included tests with:
+```bash
+pytest test_html_render.py
 ```
-
-## Educational Objectives
-
-- Understand and implement magic methods like `__init__`, `__str__`, `__repr__`, and `__call__`
-- Practice clean OOP design with base and subclass structures
-- Reinforce the concept of recursive rendering and indentation
-- Prepare for more complex HTML templating and rendering patterns
-
-## How to Run
-
-1. Clone the repo or download the folder.
-2. Run any of the included test scripts (`test_render.py`) to validate functionality.
-3. Edit or extend the class hierarchy to experiment with your own tags.
-
-## File Structure
-
-- `html_render.py` — main rendering engine
-- `test_render.py` — unit tests
-- `README.md` — this file
 
 ## License
 
-MIT License.
+This project is licensed under the MIT License.
