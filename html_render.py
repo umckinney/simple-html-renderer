@@ -9,6 +9,7 @@ attributes, self-closing tags, and one-line content.
 
 class Element:
     """Base class for all HTML elements."""
+
     tag = "element"
     indent = 2
 
@@ -66,6 +67,7 @@ class Element:
 
 class Html(Element):
     """HTML root element with <!DOCTYPE html> declaration."""
+
     tag = "html"
     doctype = "<!DOCTYPE html>"
 
@@ -78,21 +80,25 @@ class Html(Element):
 
 class Body(Element):
     """HTML <body> element."""
+
     tag = "body"
 
 
 class P(Element):
     """HTML <p> (paragraph) element."""
+
     tag = "p"
 
 
 class Head(Element):
     """HTML <head> element."""
+
     tag = "head"
 
 
 class OneLineTag(Element):
     """Represents tags that should render content on a single line."""
+
     tag = "oneline"
 
     def render(self, out_file, cur_indent=0):
@@ -112,11 +118,13 @@ class OneLineTag(Element):
 
 class Title(OneLineTag):
     """HTML <title> tag (single-line)."""
+
     tag = "title"
 
 
 class SelfClosingTag(Element):
     """Represents self-closing tags like <hr /> or <br />."""
+
     tag = "selfclosing"
 
     def __init__(self, content=None, **attributes):
@@ -134,16 +142,19 @@ class SelfClosingTag(Element):
 
 class Hr(SelfClosingTag):
     """HTML <hr /> horizontal rule."""
+
     tag = "hr"
 
 
 class Br(SelfClosingTag):
     """HTML <br /> line break."""
+
     tag = "br"
 
 
 class A(Element):
     """HTML <a> (anchor) tag with href link."""
+
     tag = "a"
 
     def __init__(self, link, content=None, **attributes):
@@ -175,16 +186,19 @@ class A(Element):
 
 class Ul(Element):
     """HTML <ul> unordered list."""
+
     tag = "ul"
 
 
 class Li(Element):
     """HTML <li> list item."""
+
     tag = "li"
 
 
 class H(Element):
     """HTML <h1> to <h6> heading element."""
+
     tag = "h"
 
     def __init__(self, level, content=None, **attributes):
@@ -202,4 +216,5 @@ class H(Element):
 
 class Meta(SelfClosingTag):
     """HTML <meta /> tag for metadata."""
+
     tag = "meta"

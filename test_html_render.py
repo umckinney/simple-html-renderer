@@ -101,6 +101,7 @@ def test_render_element2():
 # # Step 2
 # ########
 
+
 def test_html():
     e = Html("this is some text")
     e.append("and this is some more text")
